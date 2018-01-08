@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/v/filer5b/v38q001/adityat/2017Freshman-Fall/CS314H/prog7/articles'
+let g:netrw_dirhist_2='/v/filer5b/v38q001/adityat/.dotfiles/vim/plugged/taglist.vim'
+let g:netrw_dirhist_3='/v/filer5b/v38q001/adityat/.dotfiles/vim/.git'
+let g:netrw_dirhist_4='/v/filer5b/v38q001/adityat/.dotfiles/vim'
