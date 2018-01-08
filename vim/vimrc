@@ -8,6 +8,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'vim-syntastic/syntastic'
 Plug 'tpope/vim-fugitive'
 Plug 'majutsushi/tagbar'
+Plug 'vim-latex/vim-latex'
+Plug 'tpope/vim-surround'
 call plug#end()
 filetype on
 "Indent Stuff
@@ -15,7 +17,6 @@ filetype indent on
 set tabstop=2
 set shiftwidth=2
 set expandtab
-set smartindent
 
 "Number set up
 set number
@@ -88,3 +89,6 @@ augroup END
 
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
+
+" deocomplete
+let g:deoplete#enable_at_startup = 1
