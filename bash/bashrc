@@ -83,7 +83,7 @@ fi
 load_module ~/.util/aliases.sh
 
 # Load terminal color shortcuts
-load_module ~/.util/colors.sh
+load_module ~/.util/color.sh
 
 # Load prompt funtion
 load_module ~/.util/prompt.sh
