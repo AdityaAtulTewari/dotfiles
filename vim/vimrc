@@ -16,7 +16,6 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set smartindent
-set autoindent
 
 "Number set up
 set number
@@ -53,6 +52,7 @@ set cursorline " Highlight current line
 :hi CursorLine cterm=underline ctermbg=none ctermfg=none
 set nostartofline " Vertical movement preserves horizontal position
 
+" -----------------------------Plugins--------------------------------------
 " airline
 set laststatus=2 " Always show airline
 let g:airline_powerline_fonts = 1 " Use fancy arrow font
@@ -63,6 +63,28 @@ let g:airline#extensions#branch#enabled = 1
 " vim-gitgutter
 let g:airline#extensions#hunks#non_zero_only = 1 " In vim-airline, only display 'hunks' if the diff is non-zero
 let g:gitgutter_enabled = 1
+
+" javac for Syntastic
+let g:syntastic_java_checkers = ['javac']
+let g:syntastic_java_javac_config_file_enabled = 1
+
+" C++11 for Syntastic
+let g:syntastic_cpp_compiler_options = "-std=c++17"
+
+" Syntatic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_error_symbol = '✘'
+let g:syntastic_warning_symbol = "▲"
+augroup mySyntastic
+  au!
+  au FileType tex let b:syntastic_mode = "passive"
+augroup END
 
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
