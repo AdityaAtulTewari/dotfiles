@@ -1,4 +1,4 @@
-
+#
 # .bashrc - How I configure bash
 #
 # This is just a skeleton; the real heavy lifting is done by various
@@ -90,3 +90,6 @@ load_module ~/.util/prompt.sh
 
 # Load auto update script
 load_module ~/.util/auto_update.sh
+
+# Load fzf
+#load_module ~/.util/fzf.bash
