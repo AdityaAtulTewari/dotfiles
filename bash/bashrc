@@ -85,6 +85,8 @@ load_module ~/.util/aliases.sh
 # Load terminal color shortcuts
 load_module ~/.util/color.sh
 
+#Set the foreground color
+
 # Load prompt funtion
 load_module ~/.util/prompt.sh
 

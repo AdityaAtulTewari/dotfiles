@@ -10,7 +10,7 @@ export GIT_PS1_STATESEPARATOR='|'
 #export GIT_PS1_SHOWCOLORHINTS=true # Only works if PROMPT_COMMAND=__git_ps1
 
 time_jobs=$iyellow'\A'$iwhite'|'$ired'\j'$iwhite'|'
-user_host_wd=$icyan'\u'$iwhite'@'$igreen'\h'$iwhite':'$ipurple'\w'
+user_host_wd=$icyan'\u'$iwhite'@'$iblue'\h'$iwhite':'$ipurple'\w'
 
 prompt() {
     if [ $? = 0 ]
@@ -25,11 +25,11 @@ prompt() {
         /bin/fortune | ~/bin/cowsay -n
     fi
 
-    local git_color=$iyellow
+    local git_color=$iblue
     local git_status=$git_color$(__git_ps1 | cut -c 2-)
     local git_status=${git_status/"%"/$icyan"%"$git_color}
     local git_status=${git_status/"*"/$ired"*"$git_color}
-    local git_status=${git_status/"+"/$igreen"+"$git_color}
+    local git_status=${git_status/"+"/$iyellow"+"$git_color}
     local git_status=${git_status/"$"/$ipurple"$"$git_color}
     local git_status=${git_status//"("/$iwhite"("$git_color}
     local git_status=${git_status//")"/$iwhite")"$git_color}

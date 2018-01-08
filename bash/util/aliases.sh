@@ -13,7 +13,7 @@ alias "rcup"="rcup -v"
 alias "man"="vman"
 
 # Make ls better
-alias "ls"="ls $LS_COLOR_OPT" # Pretty ls
+alias "ls"="ls --color=always" # Pretty ls
 alias "list"="ls -goh $LS_COLOR_OPT" # Pretty long ls
 alias "lista"="ls -gohA $LS_COLOR_OPT" # Pretty ls with hiddens
 
