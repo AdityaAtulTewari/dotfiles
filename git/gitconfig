@@ -4,7 +4,7 @@
 [core]
   editor = vim
   preloadindex = true
-  excludesfile = ~/.gitignore_global
+	excludesfile = /u/adityat/.gitignore_global
 [color]
   ui = auto
   interactive = auto

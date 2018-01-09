@@ -14,3 +14,7 @@ echo Linking git
 ln -s ~/.dotfiles/git/git-prompt.sh ~/.git-prompt.sh
 ln -s ~/.dotfiles/git/gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/git/gitignore_global ~/.gitignore_global
+
+echo Set Git Values
+git config --global core.excludesfile ~/.gitignore_global
+

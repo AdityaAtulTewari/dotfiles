@@ -12,8 +12,16 @@ alias "rcdn"="rcdn -v"
 alias "rcup"="rcup -v"
 alias "man"="vman"
 
-# Make ls better
-alias "ls"="ls --color=always" # Pretty ls
+# Make ls better based on OS
+OS=`uname -a | head -n1 | awk '{print $1;}'`
+if [ $OS==Linux ]
+then
+  alias "ls"="ls --color=always" # Pretty ls
+elif [ $OS==Darwin ]
+then
+  alias "ls"="ls -G"
+fi
+
 alias "list"="ls -goh $LS_COLOR_OPT" # Pretty long ls
 alias "lista"="ls -gohA $LS_COLOR_OPT" # Pretty ls with hiddens
 

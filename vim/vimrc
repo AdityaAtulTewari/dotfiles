@@ -40,6 +40,9 @@ noremap <C-K> <C-W><C-K>
 noremap <C-L> <C-W><C-L>
 noremap <C-H> <C-W><C-H>
 
+" Close all windows with ZZ
+nmap ZZ :xa<CR>
+
 " Switch tabs with F5 and F6
 inoremap <F5> <ESC>:tabp<CR>i<right>
 inoremap <F6> <ESC>:tabn<CR>i<right>
@@ -89,6 +92,3 @@ augroup END
 
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
-
-" deocomplete
-let g:deoplete#enable_at_startup = 1
