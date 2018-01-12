@@ -15,9 +15,9 @@ user_host_wd=$icyan'\u'$iwhite'@'$iblue'\h'$iwhite':'$ipurple'\w'
 prompt() {
     if [ $? = 0 ]
     then
-        local dollar=$igreen'$ '
+        local dollar=$igreen'\n$ '
     else
-        local dollar=$ired'$ '
+        local dollar=$ired'\n$ '
     fi
 
     if [ "$COW_PROMPT" = true ]
@@ -25,7 +25,7 @@ prompt() {
         /bin/fortune | ~/bin/cowsay -n
     fi
 
-    local git_color=$iblue
+    local git_color=$icyan
     local git_status=$git_color$(__git_ps1 | cut -c 2-)
     local git_status=${git_status/"%"/$icyan"%"$git_color}
     local git_status=${git_status/"*"/$ired"*"$git_color}
