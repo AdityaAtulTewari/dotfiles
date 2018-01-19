@@ -4,14 +4,14 @@ echo Linking bash
 rm ~/.bashrc
 rm ~/.bash_logout
 rm ~/.bash_profile
-rm ~/.util
+rm -r ~/.util
 ln -s ~/.dotfiles/bash/bashrc ~/.bashrc
 ln -s ~/.dotfiles/bash/bash_logout ~/.bash_logout
 ln -s ~/.dotfiles/bash/bash_profile ~/.bash_profile
 ln -s ~/.dotfiles/bash/util ~/.util
 
 echo Linking vim
-rm ~/.vim
+rm -r ~/.vim
 rm ~/.vimrc
 ln -s ~/.dotfiles/vim ~/.vim
 ln -s ~/.vim/vimrc ~/.vimrc
