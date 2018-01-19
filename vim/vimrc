@@ -49,6 +49,9 @@ inoremap <F6> <ESC>:tabn<CR>i<right>
 nnoremap <F5> :tabp<CR>
 nnoremap <F6> :tabn<CR>
 
+" Use CTRL-T as a shortcut for make
+nnoremap <C-T> :make<CR>
+
 set showmatch  " Highlight matching braces
 
 colorscheme Atelier_HeathDark
