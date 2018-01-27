@@ -17,6 +17,8 @@ filetype indent on
 set tabstop=2
 set shiftwidth=2
 set expandtab
+set autoindent
+set smarttab
 
 "Number set up
 set number
@@ -58,6 +60,7 @@ colorscheme Atelier_HeathDark
 set cursorline " Highlight current line
 :hi CursorLine cterm=underline ctermbg=none ctermfg=none
 set nostartofline " Vertical movement preserves horizontal position
+:imap ;; <Esc>
 
 " -----------------------------Plugins--------------------------------------
 " airline
