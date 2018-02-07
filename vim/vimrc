@@ -10,10 +10,12 @@ Plug 'tpope/vim-fugitive'
 Plug 'majutsushi/tagbar'
 Plug 'vim-latex/vim-latex'
 Plug 'tpope/vim-surround'
+Plug 'raimondi/delimitmate'
 call plug#end()
 filetype on
 "Indent Stuff
 filetype indent on
+set foldmethod=syntax
 set tabstop=2
 set shiftwidth=2
 set expandtab
@@ -26,10 +28,12 @@ set colorcolumn=160
 set tw=159
 autocmd BufWritePre * :%s/\s\+$//e
 set hlsearch
+set scrolloff=5
 
 "Configure NerdTree
 let NERDTreeMapActivateNode='<right>'
 let NERDTreeShowHidden=1
+noremap <F6> :NERDTreeToggle <CR>
 autocmd VimEnter * NERDTree
 autocmd VimEnter * wincmd p
 syntax on
@@ -61,6 +65,11 @@ set cursorline " Highlight current line
 :hi CursorLine cterm=underline ctermbg=none ctermfg=none
 set nostartofline " Vertical movement preserves horizontal position
 :imap ;; <Esc>
+
+"Add mouse settings
+if has('mouse')
+  set mouse=a
+endif
 
 " -----------------------------Plugins--------------------------------------
 " airline
