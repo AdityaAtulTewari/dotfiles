@@ -31,6 +31,9 @@ autocmd BufWritePre * :%s/\s\+$//e
 set hlsearch
 set scrolloff=5
 
+set ttyfast
+set lazyredraw
+
 "Configure NerdTree
 let NERDTreeMapActivateNode='<right>'
 let NERDTreeShowHidden=1
@@ -65,7 +68,7 @@ colorscheme Atelier_HeathDark
 set cursorline " Highlight current line
 :hi CursorLine cterm=underline ctermbg=none ctermfg=none
 set nostartofline " Vertical movement preserves horizontal position
-:imap ;; <Esc>
+:imap jj <Esc>
 
 "Add mouse settings
 if has('mouse')
