@@ -12,10 +12,12 @@ Plug 'vim-latex/vim-latex'
 Plug 'tpope/vim-surround'
 Plug 'raimondi/delimitmate'
 Plug 'jez/vim-superman'
+Plug 'rust-lang/rust.vim'
 call plug#end()
+au BufRead,BufNewFile *.rs set filetype=rust
+"filetype on
 filetype on
 "Indent Stuff
-filetype indent on
 set foldmethod=syntax
 set tabstop=2
 set shiftwidth=2
@@ -62,6 +64,9 @@ nnoremap <F6> :tabn<CR>
 " Use CTRL-T as a shortcut for make
 nnoremap <C-T> :make<CR>
 
+" Get rid of highlighting after stuff
+nnoremap <CR> :noh<CR><CR>
+
 set showmatch  " Highlight matching braces
 
 colorscheme Atelier_HeathDark
@@ -69,6 +74,9 @@ set cursorline " Highlight current line
 :hi CursorLine cterm=underline ctermbg=none ctermfg=none
 set nostartofline " Vertical movement preserves horizontal position
 :imap jj <Esc>
+:imap kk <Esc>
+:imap hh <Esc>
+:imap lll <Esc>
 
 "Add mouse settings
 if has('mouse')
@@ -91,8 +99,12 @@ let g:gitgutter_enabled = 1
 let g:syntastic_java_checkers = ['javac']
 let g:syntastic_java_javac_config_file_enabled = 1
 
-" C++11 for Syntastic
+" C++17 for Syntastic
 let g:syntastic_cpp_compiler_options = "-std=c++17"
+
+" Rust for Syntastic
+let g:syntastic_rust_checkers = ['rustc']
+let g:rust_recommended_style = 0
 
 " Syntatic
 set statusline+=%#warningmsg#
