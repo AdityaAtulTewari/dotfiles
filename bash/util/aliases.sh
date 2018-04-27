@@ -14,10 +14,10 @@ alias "man"="vman"
 
 # Make ls better based on OS
 OS=`uname -a | head -n1 | awk '{print $1;}'`
-if [ $OS==Linux ]
+if [ $OS == "Linux" ]
 then
   alias "ls"="ls --color=always" # Pretty ls
-elif [ $OS==Darwin ]
+elif [ $OS == "Darwin" ]
 then
   alias "ls"="ls -G"
 fi
