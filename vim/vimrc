@@ -91,6 +91,12 @@ let g:airline_detect_paste=1 " Show PASTE if in paste mode
 let g:airline#extensions#tabline#enabled = 1 " Show airline for tabs too
 let g:airline#extensions#branch#enabled = 1
 
+" NERDtree
+" Open/close NERDTree Tabs with \t
+nmap <silent> <leader>t :NERDTreeTabsToggle<CR>
+" To have NERDTree always open on startup
+let g:nerdtree_tabs_open_on_console_startup = 1
+
 " vim-gitgutter
 let g:airline#extensions#hunks#non_zero_only = 1 " In vim-airline, only display 'hunks' if the diff is non-zero
 let g:gitgutter_enabled = 1
@@ -106,7 +112,7 @@ let g:syntastic_cpp_compiler_options = "-std=c++17"
 let g:syntastic_rust_checkers = ['rustc']
 let g:rust_recommended_style = 0
 
-" Syntatic
+" Syntactic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -119,6 +125,7 @@ let g:syntastic_warning_symbol = "▲"
 augroup mySyntastic
   au!
   au FileType tex let b:syntastic_mode = "passive"
+  au FileType tex let b:delimitMate_matchpairs = "(:),[:],{:},`:'""'`"
 augroup END
 
 " Tagbar

@@ -95,3 +95,4 @@ load_module ~/.util/auto_update.sh
 
 # Load fzf
 #load_module ~/.util/fzf.bash
+export PATH="$HOME/.cargo/bin:$PATH"
