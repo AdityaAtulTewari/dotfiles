@@ -44,8 +44,6 @@ noremap <F6> :NERDTreeToggle <CR>
 autocmd VimEnter * NERDTree
 autocmd VimEnter * wincmd p
 syntax on
-filetype indent off
-filetype plugin on
 
 " Switch windows with CTRL-hjkl
 noremap <C-J> <C-W><C-J>
