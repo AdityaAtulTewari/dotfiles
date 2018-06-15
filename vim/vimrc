@@ -13,6 +13,7 @@ Plug 'tpope/vim-surround'
 Plug 'raimondi/delimitmate'
 Plug 'jez/vim-superman'
 Plug 'rust-lang/rust.vim'
+Plug 'fatih/vim-go'
 call plug#end()
 au BufRead,BufNewFile *.rs set filetype=rust
 "filetype on
