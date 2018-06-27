@@ -13,11 +13,10 @@ Plug 'tpope/vim-surround'
 Plug 'raimondi/delimitmate'
 Plug 'jez/vim-superman'
 Plug 'rust-lang/rust.vim'
+Plug 'kana/vim-filetype-haskell'
 Plug 'fatih/vim-go'
 call plug#end()
 au BufRead,BufNewFile *.rs set filetype=rust
-"filetype on
-filetype on
 "Indent Stuff
 set foldmethod=syntax
 set tabstop=2
@@ -44,6 +43,7 @@ noremap <F6> :NERDTreeToggle <CR>
 autocmd VimEnter * NERDTree
 autocmd VimEnter * wincmd p
 syntax on
+filetype on
 
 " Switch windows with CTRL-hjkl
 noremap <C-J> <C-W><C-J>

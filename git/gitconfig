@@ -1,10 +1,10 @@
 [user]
-  name = AdityaAtulTewari
-  email = adityaatewari@gmail.com
+	name = atewari
+	email = aditya.tewari@viasat.com
 [core]
   editor = vim
   preloadindex = true
-	excludesfile = /Users/adityatewari/.gitignore_global
+	excludesfile = /Users/atewari/.gitignore_global
 [color]
   ui = auto
   interactive = auto
