@@ -3,4 +3,4 @@ then
   source ~/.bashrc
 fi
 
-export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/Library/Haskell/bin:$HOME/.cargo/bin:$PATH"

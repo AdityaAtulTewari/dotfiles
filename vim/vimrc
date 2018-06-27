@@ -111,6 +111,12 @@ let g:syntastic_cpp_compiler_options = "-std=c++17"
 let g:syntastic_rust_checkers = ['rustc']
 let g:rust_recommended_style = 0
 
+" Golang for Syntastic
+let g:syntastic_go_checkers = ['gofmt']
+
+" Haskell Syntax
+let g:syntastic_haskell_checkers = ['hlint']
+
 " Syntactic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
