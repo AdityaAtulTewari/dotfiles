@@ -9,3 +9,4 @@ let g:go_addtags_transform = "snake_case"
 let g:ale_linters = {"go":['golint', 'govet', 'gometalinter']}
 let g:ale_go_gometalinter_options = '--disable-all --enable=errcheck'
 let g:ale_go_gometalinter_lint_package = 1
+nnoremap <CR> :noh<CR><CR>

@@ -2,10 +2,8 @@ if [ -f ~/.bashrc ]
 then
   source ~/.bashrc
 fi
-<<<<<<< HEAD
+
 export GOPATH="$HOME/go"
 export PATH="$HOME/go/bin:$HOME/.cargo/bin:$PATH"
-=======
 
 export PATH="$HOME/Library/Haskell/bin:$HOME/.cargo/bin:$PATH"
->>>>>>> 4af3e152b9cc8913f45bfd43145b3a3176d2fb37

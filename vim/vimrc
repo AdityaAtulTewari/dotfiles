@@ -79,7 +79,7 @@ set nostartofline " Vertical movement preserves horizontal position
 
 "Add mouse settings
 if has('mouse')
-  set mouse=a
+set mouse=a
 endif
 
 " -----------------------------Plugins--------------------------------------
