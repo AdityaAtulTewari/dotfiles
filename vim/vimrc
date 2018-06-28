@@ -5,7 +5,7 @@ Plug 'vim-scripts/taglist.vim'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
-Plug 'vim-syntastic/syntastic'
+Plug 'w0rp/ale'
 Plug 'tpope/vim-fugitive'
 Plug 'majutsushi/tagbar'
 Plug 'vim-latex/vim-latex'
@@ -14,7 +14,7 @@ Plug 'raimondi/delimitmate'
 Plug 'jez/vim-superman'
 Plug 'rust-lang/rust.vim'
 Plug 'kana/vim-filetype-haskell'
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 call plug#end()
 au BufRead,BufNewFile *.rs set filetype=rust
 "Indent Stuff
@@ -101,34 +101,43 @@ let g:airline#extensions#hunks#non_zero_only = 1 " In vim-airline, only display 
 let g:gitgutter_enabled = 1
 
 " javac for Syntastic
-let g:syntastic_java_checkers = ['javac']
+let g:ale_linters = {"java" : "javac"}
 let g:syntastic_java_javac_config_file_enabled = 1
 
 " C++17 for Syntastic
-let g:syntastic_cpp_compiler_options = "-std=c++17"
+let g:ale_linters = {"cpp" : "g++"}
+let g:ale_cpp_gcc_options = '-std=c++17 -Wall'
 
-" Rust for Syntastic
-let g:syntastic_rust_checkers = ['rustc']
+" Rust for Ale
+let g:ale_linters = {"rust" : "rustc"}
 let g:rust_recommended_style = 0
 
-" Go for Syntastic
-let g:syntastic_go_checkers = ['gofmt']
+"ALE
+let g:ale_fix_on_save = 1
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_sign_error = '✘'
+"let g:ale_sign_warning = '⚠'
+let g:ale_sign_warning = "▲"
+highlight ALEErrorSign ctermbg=NONE ctermfg=red
+highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
+function! LinterStatus() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
 
-" Syntactic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_error_symbol = '✘'
-let g:syntastic_warning_symbol = "▲"
-augroup mySyntastic
-  au!
-  au FileType tex let b:syntastic_mode = "passive"
-  au FileType tex let b:delimitMate_matchpairs = "(:),[:],{:},`:'""'`"
-augroup END
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
+
+    return l:counts.total == 0 ? 'OK' : printf(
+    \   '%dW %dE',
+    \   all_non_errors,
+    \   all_errors
+    \)
+endfunction
+set statusline=%{LinterStatus()}
+let g:airline#extensions#ale#enabled = 1
+let g:ale_set_loclist = 1
+let g:ale_set_quickfix = 0
+let g:ale_lint_on_save = 1
+let g:ale_open_list = 1
 
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
