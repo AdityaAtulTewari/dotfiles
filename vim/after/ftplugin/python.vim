@@ -7,4 +7,4 @@ set autoindent
 set smarttab
 filetype indent off
 
-let g:syntastic_python_checkers = ['pylint']
+let g:ale_linters = {"python":'pylint'}
