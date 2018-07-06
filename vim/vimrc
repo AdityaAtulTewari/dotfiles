@@ -101,15 +101,15 @@ let g:airline#extensions#hunks#non_zero_only = 1 " In vim-airline, only display 
 let g:gitgutter_enabled = 1
 
 " javac for Syntastic
-let g:ale_linters = {"java" : "javac"}
+let g:ale_linters = {"java" : ["javac"]}
 let g:syntastic_java_javac_config_file_enabled = 1
 
 " C++17 for Syntastic
-let g:ale_linters = {"cpp" : "g++"}
+let g:ale_linters = {"cpp" : ["g++"]}
 let g:ale_cpp_gcc_options = '-std=c++17 -Wall'
 
 " Rust for Ale
-let g:ale_linters = {"rust" : "rustc"}
+let g:ale_linters = {"rust" : ["rustc"]}
 let g:rust_recommended_style = 0
 
 "ALE
