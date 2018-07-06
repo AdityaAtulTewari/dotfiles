@@ -13,7 +13,6 @@ Plug 'tpope/vim-surround'
 Plug 'raimondi/delimitmate'
 Plug 'jez/vim-superman'
 Plug 'rust-lang/rust.vim'
-Plug 'kana/vim-filetype-haskell'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 call plug#end()
 au BufRead,BufNewFile *.rs set filetype=rust
