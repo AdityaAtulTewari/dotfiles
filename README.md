@@ -10,3 +10,6 @@
 In order to display things correctly you will need [powerline](https://github.com/powerline/fonts) fonts.
 Additionally you may need to install [ctags](https://github.com/universal-ctags/ctags).
 
+## Color Customization
+By editing the file `~/.dotfiles/bash/util/prompt.sh`.
+Look inside `~/.dotfiles/bash/util/colors.sh`, for valid colors (you can also add your own).
