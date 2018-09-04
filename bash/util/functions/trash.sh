@@ -65,3 +65,4 @@ trash() {
         fi
     done
 }
+

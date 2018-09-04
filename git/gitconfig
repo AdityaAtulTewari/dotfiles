@@ -27,3 +27,8 @@
   unassume = !git ls-files -v | grep '^h' | cut -c3- | xargs git update-index --no-assume-unchanged
   submodule-pull = submodule foreach git pull origin master
   # ignore411 = !git update-index --assume-unchanged lab*/test*/* lab5/bench*/*
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
