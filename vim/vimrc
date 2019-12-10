@@ -146,3 +146,6 @@ nmap <F8> :TagbarToggle<CR>
 
 "vim-go
 let g:go_version_warning = 0
+
+set background=dark
+set t_Co=256
