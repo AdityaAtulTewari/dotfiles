@@ -24,6 +24,10 @@ ln -s ~/.dotfiles/git/git-prompt.sh ~/.git-prompt.sh
 ln -s ~/.dotfiles/git/gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/git/gitignore_global ~/.gitignore_global
 
+echo Linking tmux
+rm ~/.tmux.comf
+ln -s ~/.dotfiles/tmux/tmux.conf ~/.tmux.conf
+
 echo Set Git Values
 git config --global core.excludesfile ~/.gitignore_global
 
