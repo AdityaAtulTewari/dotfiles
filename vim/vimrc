@@ -15,6 +15,9 @@ Plug 'jez/vim-superman'
 Plug 'rust-lang/rust.vim'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'the-lambda-church/coquille', { 'branch' : 'pathogen-bundle'}
+Plug 'derekwyatt/vim-scala'
+Plug 'def-lkb/vimbufsync'
 call plug#end()
 au BufRead,BufNewFile *.rs set filetype=rust
 "Indent Stuff
@@ -39,7 +42,9 @@ set lazyredraw
 "Configure NerdTree
 let NERDTreeMapActivateNode='<right>'
 let NERDTreeShowHidden=1
-noremap <F6> :NERDTreeToggle <CR>
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+noremap <F7> :NERDTreeToggle <CR>
 autocmd VimEnter * NERDTree
 autocmd VimEnter * wincmd p
 syntax on
