@@ -19,6 +19,7 @@ Plug 'the-lambda-church/coquille', { 'branch' : 'pathogen-bundle'}
 Plug 'derekwyatt/vim-scala'
 Plug 'def-lkb/vimbufsync'
 call plug#end()
+
 au BufRead,BufNewFile *.rs set filetype=rust
 "Indent Stuff
 set foldmethod=syntax

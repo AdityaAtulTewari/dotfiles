@@ -8,9 +8,7 @@
 #   Jake Zimmerman <jake@zimmerman.io>
 # Modified by
 #   Michael Murphy <mjmurphy@cmu.edu>
-#
-# Usage
-#   - Requires my colors.sh to have been sourced already for colorized output
+# # Usage #   - Requires my colors.sh to have been sourced already for colorized output
 #   - source this file to check if the "system is out of date" (i.e., hasn't
 #     been updated in UPDATE_THRESHOLD seconds)
 #   - call `update` to run general update checks and checks defined by the
@@ -68,21 +66,20 @@ update() {
   # --- Host-independent updates ---
 
   # Update dotfiles repo
-  cd ~/.dotfiles/
+  pushd ~/.dotfiles/
   echo "$cblueb==>$cwhiteb Updating dotfiles...$cnone"
   git fetch --quiet origin
-  if [ "$(git rev-parse HEAD)" != "$(git rev-parse origin/master)" ]; then echo "$credb  --> outdated.$cnone (remember to run rcup after pulling)"; fi
+  if [ "$(git rev-parse HEAD)" != "$(git rev-parse origin/master)" ]; then echo "$credb  --> outdated."; fi
+  git pull
 
-  # Update each submodule in the dotfiles repo
-  echo "$cblueb==>$cwhiteb Checking for outdated dotfiles submodules...$cnone"
-  git submodule init
-  # git submodule update
-  git submodule foreach --quiet 'git fetch --quiet && if [ "$(git rev-parse HEAD)" != "$(git rev-parse origin/master)" ]; then echo $path; fi'
-  cd - &> /dev/null
+  # Update vim plugins
+  vim -c ":PlugUpdate" -c ":wqa" ~/.vimrc
 
   # --- Host-dependent updates ---
+  os_update
 
-  type update_host &> /dev/null && update_host
+  popd
+
 }
 
 

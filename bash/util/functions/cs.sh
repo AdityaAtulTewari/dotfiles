@@ -2,5 +2,5 @@
 
 cs () {
     custom_cd "$@" &&
-    timeout 1s ls --color=always
+    ls --color=always
 }

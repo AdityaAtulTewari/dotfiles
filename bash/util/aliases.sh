@@ -12,7 +12,7 @@ alias "rcdn"="rcdn -v"
 alias "rcup"="rcup -v"
 alias "man"="vman"
 
-# Make ls better based on OS
+# Make ls colorful based on OS
 OS=`uname -a | head -n1 | awk '{print $1;}'`
 if [ $OS == "Linux" ]
 then
@@ -53,6 +53,3 @@ alias "howami"='echo amused'
 alias ":wq"="echo 'try C-x C-c'"
 alias ":q"="vim"
 alias "star_wars"="telnet towel.blinkenlights.nl"
-alias "shh_andrew"="shh andrew"
-alias "shh_shark"="shh shark"
-alias "shh_ghc"=" shh ghc"

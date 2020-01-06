@@ -25,7 +25,7 @@ ln -s ~/.dotfiles/git/gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/git/gitignore_global ~/.gitignore_global
 
 echo Linking tmux
-rm ~/.tmux.comf
+rm ~/.tmux.conf
 ln -s ~/.dotfiles/tmux/tmux.conf ~/.tmux.conf
 
 echo Set Git Values
