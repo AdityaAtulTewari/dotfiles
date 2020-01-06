@@ -32,7 +32,7 @@ unix_time() {
 }
 
 # Number of seconds to wait before printing a reminder
-UPDATE_THRESHOLD="604800"
+UPDATE_THRESHOLD="86400"
 # File to record the unix time when update was last run
 last_update=$HOME/.last_update
 
