@@ -67,6 +67,7 @@ update() {
 
   # Update dotfiles repo
   pushd ~/.dotfiles/
+  git stash
   echo "$cblueb==>$cwhiteb Updating dotfiles...$cnone"
   git fetch --quiet origin
   if [ "$(git rev-parse HEAD)" != "$(git rev-parse origin/master)" ]; then echo "$credb  --> outdated."; fi
@@ -78,6 +79,7 @@ update() {
   # --- Host-dependent updates ---
   os_update
 
+  git stash pop
   popd
 
 }
