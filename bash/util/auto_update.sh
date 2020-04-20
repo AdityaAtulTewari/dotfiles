@@ -72,14 +72,14 @@ update() {
   git fetch --quiet origin
   if [ "$(git rev-parse HEAD)" != "$(git rev-parse origin/master)" ]; then echo "$credb  --> outdated."; fi
   git pull
-
+  git stash pop
   # Update vim plugins
   vim -c ":PlugUpdate" -c ":wqa" ~/.vimrc
 
   # --- Host-dependent updates ---
   os_update
 
-  git stash pop
+  
   popd
 
 }
