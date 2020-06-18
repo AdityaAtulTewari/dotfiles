@@ -15,10 +15,18 @@ user_host_wd=$icyan'\u'$iwhite'@'$iblue'\h'$iwhite':'$ipurple'\w'
 prompt() {
     if [ $? = 0 ]
     then
-        local dollar=$igreen'\n$ '
+        local dollar=$igreen
     else
-        local dollar=$ired'\n$ '
+        local dollar=$ired
     fi
+
+    if [ "$USER" = "root" ]
+    then
+      local dollar=$dollar'\n# '
+    else
+      local dollar=$dollar'\n$ '
+    fi
+
 
     if [ "$COW_PROMPT" = true ]
     then
