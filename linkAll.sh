@@ -27,6 +27,7 @@ ln -s $HOME/.dotfiles/tmux/tmux.conf $HOME/.tmux.conf
 
 echo Setup Local Bin
 mkdir -p $HOME/local/bin
+test -d $HOME/.cargo || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 echo Set Git Values
 git config --global core.excludesfile $HOME/.gitignore_global
