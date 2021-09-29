@@ -12,7 +12,7 @@
   default = simple
 [credential]
   # helper = osxkeychain # OS X
-  # helper = cache --timeout=3600 # Linux
+	# helper = store #Linux, now that PAT are a thing
 [alias]
   global = config --global --edit
   aliases = !git config -l | grep alias | cut -c7-
