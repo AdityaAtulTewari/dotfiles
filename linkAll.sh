@@ -1,33 +1,33 @@
-#!/bin/bash
+#!/bin/sh
 
-echo Linking bash
-rm ~/.bashrc
-rm ~/.bash_logout
-rm ~/.bash_profile
-rm -r ~/.util
-ln -s ~/.dotfiles/bash/bashrc ~/.bashrc
-ln -s ~/.dotfiles/bash/bash_logout ~/.bash_logout
-ln -s ~/.dotfiles/bash/bash_profile ~/.bash_profile
-ln -s ~/.dotfiles/bash/util ~/.util
+echo Linking zsh
+test -d $HOME/.oh-my-zsh || sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+rm $HOME/.zshrc
+rm $HOME/.zshenv
+rm $HOME/.oh-my-zsh/themes/tewaro.zsh-theme
+ln -s $HOME/.dotfiles/zsh/zshrc $HOME/.zshrc
+ln -s $HOME/.dotfiles/zsh/zshenv $HOME/.zshenv
+ln -s $HOME/.dotfiles/zsh/themes/tewaro.zsh-theme $HOME/.oh-my-zsh/themes/tewaro.zsh-theme
 
 echo Linking vim
-rm -r ~/.vim
-rm ~/.vimrc
-ln -s ~/.dotfiles/vim ~/.vim
-ln -s ~/.vim/vimrc ~/.vimrc
+rm -r $HOME/.vim
+rm $HOME/.vimrc
+ln -s $HOME/.dotfiles/vim $HOME/.vim
+ln -s $HOME/.vim/vimrc $HOME/.vimrc
 
 echo Linking git
-rm ~/.git-prompt.sh
-rm ~/.gitconfig
-rm ~/.gitignore_global
-ln -s ~/.dotfiles/git/git-prompt.sh ~/.git-prompt.sh
-ln -s ~/.dotfiles/git/gitconfig ~/.gitconfig
-ln -s ~/.dotfiles/git/gitignore_global ~/.gitignore_global
+rm $HOME/.gitconfig
+rm $HOME/.gitignore_global
+ln -s $HOME/.dotfiles/git/gitconfig $HOME/.gitconfig
+ln -s $HOME/.dotfiles/git/gitignore_global $HOME/.gitignore_global
 
 echo Linking tmux
-rm ~/.tmux.conf
-ln -s ~/.dotfiles/tmux/tmux.conf ~/.tmux.conf
+rm $HOME/.tmux.conf
+ln -s $HOME/.dotfiles/tmux/tmux.conf $HOME/.tmux.conf
+
+echo Setup Local Bin
+mkdir -p $HOME/local/bin
 
 echo Set Git Values
-git config --global core.excludesfile ~/.gitignore_global
+git config --global core.excludesfile $HOME/.gitignore_global
 
