@@ -26,7 +26,7 @@ rm $HOME/.tmux.conf
 ln -s $HOME/.dotfiles/tmux/tmux.conf $HOME/.tmux.conf
 
 echo Setup Local Bin
-mkdir -p $HOME/local/bin
+mkdir -p $HOME/.local/bin
 
 echo Set Git Values
 git config --global core.excludesfile $HOME/.gitignore_global
