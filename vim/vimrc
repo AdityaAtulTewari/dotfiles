@@ -8,7 +8,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'w0rp/ale'
 Plug 'tpope/vim-fugitive'
 Plug 'majutsushi/tagbar'
-Plug 'vim-latex/vim-latex'
+Plug 'lervag/vimtex'
 Plug 'tpope/vim-surround'
 Plug 'raimondi/delimitmate'
 Plug 'jez/vim-superman'
@@ -154,3 +154,6 @@ let g:go_version_warning = 0
 
 set background=dark
 set t_Co=256
+
+"vimtex
+let g:tex_flavor = 'latex'
