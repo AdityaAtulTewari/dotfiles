@@ -5,7 +5,7 @@ Plug 'vim-scripts/taglist.vim'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 Plug 'tpope/vim-fugitive'
 Plug 'majutsushi/tagbar'
 Plug 'lervag/vimtex'
@@ -14,9 +14,10 @@ Plug 'raimondi/delimitmate'
 Plug 'jez/vim-superman'
 Plug 'rust-lang/rust.vim'
 Plug 'neovimhaskell/haskell-vim'
-Plug 'the-lambda-church/coquille', { 'branch' : 'pathogen-bundle'}
+Plug 'whonore/Coqtail'
 Plug 'derekwyatt/vim-scala'
 Plug 'def-lkb/vimbufsync'
+Plug 'mlr-msft/vim-loves-dafny', {'for': 'dafny'}
 call plug#end()
 
 au BufRead,BufNewFile *.rs set filetype=rust
@@ -105,26 +106,22 @@ let g:nerdtree_tabs_open_on_console_startup = 1
 let g:airline#extensions#hunks#non_zero_only = 1 " In vim-airline, only display 'hunks' if the diff is non-zero
 let g:gitgutter_enabled = 1
 
-" javac for Syntastic
-let g:ale_linters = {"java" : ["javac"]}
-let g:syntastic_java_javac_config_file_enabled = 1
-
-" C++17 for Syntastic
-let g:ale_linters = {"cpp" : ["g++"]}
-let g:ale_cpp_gcc_options = '-std=c++17 -Wall'
-
-" Rust for Ale
-let g:ale_linters = {"rust" : ["rustc"]}
-let g:rust_recommended_style = 0
-
 "ALE
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
 let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 0
+let g:ale_linters_explicit = 1
+let g:ale_lint_delay = 0
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+let g:ale_open_list = 1
 let g:ale_sign_error = '✘'
 "let g:ale_sign_warning = '⚠'
 let g:ale_sign_warning = "▲"
-highlight ALEErrorSign ctermbg=NONE ctermfg=red
-highlight ALEWarningSign ctermbg=NONE ctermfg=magenta
+"highlight clear ALEErrorSign
+"highlight clear ALEWarningSign
+highlight ALEErrorSign ctermbg=NONE ctermfg=magenta
+highlight ALEWarningSign ctermbg=NONE ctermfg=cyan
 function! LinterStatus() abort
     let l:counts = ale#statusline#Count(bufnr(''))
 
@@ -139,11 +136,6 @@ function! LinterStatus() abort
 endfunction
 set statusline=%{LinterStatus()}
 let g:airline#extensions#ale#enabled = 1
-let g:ale_set_loclist = 1
-let g:ale_set_quickfix = 0
-let g:ale_lint_on_save = 1
-let g:ale_open_list = 1
-let g:ale_linters_explicit = 1
 
 
 " Tagbar
