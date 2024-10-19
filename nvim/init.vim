@@ -1,26 +1,17 @@
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/plugged')
 Plug 'https://github.com/atelierbram/vim-colors_atelier-schemes'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'vim-scripts/taglist.vim'
+Plug 'scrooloose/nerdtree'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
-Plug 'dense-analysis/ale'
 Plug 'tpope/vim-fugitive'
-Plug 'majutsushi/tagbar'
-Plug 'lervag/vimtex'
 Plug 'tpope/vim-surround'
-Plug 'raimondi/delimitmate'
 Plug 'jez/vim-superman'
-Plug 'rust-lang/rust.vim'
-Plug 'neovimhaskell/haskell-vim'
-Plug 'whonore/Coqtail'
-Plug 'derekwyatt/vim-scala'
-Plug 'def-lkb/vimbufsync'
-Plug 'mlr-msft/vim-loves-dafny', {'for': 'dafny'}
+Plug 'neovim/nvim-lspconfig'
 call plug#end()
 
-au BufRead,BufNewFile *.rs set filetype=rust
+set nocompatible " disable compatibility to old-time vi
+
 "Indent Stuff
 set foldmethod=syntax
 set tabstop=2
@@ -37,19 +28,9 @@ autocmd BufWritePre * :%s/\s\+$//e
 set hlsearch
 set scrolloff=5
 
+"Speed Setup
 set ttyfast
 set lazyredraw
-
-"Configure NerdTree
-let NERDTreeMapActivateNode='<right>'
-let NERDTreeShowHidden=1
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
-noremap <F7> :NERDTreeToggle <CR>
-autocmd VimEnter * NERDTree
-autocmd VimEnter * wincmd p
-syntax on
-filetype on
 
 " Switch windows with CTRL-hjkl
 noremap <C-J> <C-W><C-J>
@@ -83,11 +64,6 @@ set nostartofline " Vertical movement preserves horizontal position
 :imap hh <Esc>
 :imap lll <Esc>
 
-"Add mouse settings
-if has('mouse')
-set mouse=a
-endif
-
 " -----------------------------Plugins--------------------------------------
 " airline
 set laststatus=2 " Always show airline
@@ -98,7 +74,7 @@ let g:airline#extensions#branch#enabled = 1
 
 " NERDtree
 " Open/close NERDTree Tabs with \t
-nmap <silent> <leader>t :NERDTreeTabsToggle<CR>
+nmap <silent> <leader>t :NERDTreeToggle<CR>
 " To have NERDTree always open on startup
 let g:nerdtree_tabs_open_on_console_startup = 1
 
@@ -106,46 +82,36 @@ let g:nerdtree_tabs_open_on_console_startup = 1
 let g:airline#extensions#hunks#non_zero_only = 1 " In vim-airline, only display 'hunks' if the diff is non-zero
 let g:gitgutter_enabled = 1
 
-"ALE
-let g:ale_fix_on_save = 0
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_insert_leave = 0
-let g:ale_linters_explicit = 1
-let g:ale_lint_delay = 0
-let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 1
-let g:ale_open_list = 1
-let g:ale_sign_error = '✘'
-"let g:ale_sign_warning = '⚠'
-let g:ale_sign_warning = "▲"
-"highlight clear ALEErrorSign
-"highlight clear ALEWarningSign
-highlight ALEErrorSign ctermbg=NONE ctermfg=magenta
-highlight ALEWarningSign ctermbg=NONE ctermfg=cyan
-function! LinterStatus() abort
-    let l:counts = ale#statusline#Count(bufnr(''))
-
-    let l:all_errors = l:counts.error + l:counts.style_error
-    let l:all_non_errors = l:counts.total - l:all_errors
-
-    return l:counts.total == 0 ? 'OK' : printf(
-    \   '%dW %dE',
-    \   all_non_errors,
-    \   all_errors
-    \)
-endfunction
-set statusline=%{LinterStatus()}
-let g:airline#extensions#ale#enabled = 1
-
-
-" Tagbar
-nmap <F8> :TagbarToggle<CR>
-
-"vim-go
-let g:go_version_warning = 0
-
 set background=dark
 set t_Co=256
 
-"vimtex
-let g:tex_flavor = 'latex'
+if &term =~ '^xterm'
+  " solid underscore
+  let &t_SI .= "\<Esc>[4 q"
+  " solid block
+  let &t_EI .= "\<Esc>[2 q"
+  " 1 or 0 -> blinking block
+  " 3 -> blinking underscore
+  " Recent versions of xterm (282 or above) also support
+  " 5 -> blinking vertical bar
+  " 6 -> solid vertical bar
+endif
+
+lua << EOF
+local lspconfig = require('lspconfig')
+
+vim.diagnostic.config({
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = '✘',
+      [vim.diagnostic.severity.WARN] = '⚠',
+      [vim.diagnostic.severity.INFO] = 'I',
+      [vim.diagnostic.severity.HINT] = 'H',
+    },
+  },
+})
+
+lspconfig.clangd.setup{}
+lspconfig.gopls.setup{}
+lspconfig.rust_analyzer.setup{}
+EOF

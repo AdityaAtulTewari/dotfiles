@@ -2,9 +2,9 @@
 	name = AdityaAtulTewari
 	email = adityaatewari@gmail.com
 [core]
-  editor = vim
+  editor = nvim
   preloadindex = true
-	excludesfile = /Users/adityatewari/.gitignore_global
+	excludesfile = /home/tewaro/.gitignore_global
 [color]
   ui = auto
   interactive = auto
