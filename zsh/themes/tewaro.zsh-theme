@@ -35,8 +35,8 @@
 CURRENT_BG='NONE'
 
 case ${SOLARIZED_THEME:-dark} in
-    light) CURRENT_FG='white';;
-    *)     CURRENT_FG='black';;
+    light) CURRENT_FG='magenta';;
+    *)     CURRENT_FG='magenta';;
 esac
 
 # Special Powerline characters
@@ -111,7 +111,7 @@ prompt_end() {
 # Context: user@hostname (who am I and where am I)
 prompt_context() {
   if [[ "$USERNAME" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-    prompt_segment blue default "%(!.%{%F{magenta}%}.)%n@%m"
+    prompt_segment 017 default "%(!.%{%F{169}%}.)%n@%m"
   fi
 }
 
@@ -135,7 +135,7 @@ prompt_git() {
     if [[ -n $dirty ]]; then
       prompt_segment yellow black
     else
-      prompt_segment green $CURRENT_FG
+      prompt_segment green black
     fi
 
     if [[ -e "${repo_path}/BISECT_LOG" ]]; then
@@ -226,7 +226,7 @@ prompt_hg() {
 
 # Dir: current working directory
 prompt_dir() {
-  prompt_segment cyan $CURRENT_FG '%~'
+  prompt_segment cyan black '%~'
 }
 
 # Virtualenv: current working virtualenv

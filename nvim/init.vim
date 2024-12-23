@@ -97,6 +97,22 @@ if &term =~ '^xterm'
   " 6 -> solid vertical bar
 endif
 
+hi ActiveTerminal ctermfg=NONE ctermbg=16 guibg=#000000 guifg=NONE
+
+" Terminal Buffer
+function! TerminalSettings()
+  setlocal nonumber
+  setlocal winhighlight=Normal:ActiveTerminal
+  setlocal notermguicolors
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  normal a
+endfunction
+augroup terminal
+    autocmd!
+    autocmd TermOpen * call TerminalSettings()
+augroup END
+
 lua << EOF
 local lspconfig = require('lspconfig')
 
