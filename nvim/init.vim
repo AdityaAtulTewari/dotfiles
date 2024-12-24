@@ -97,9 +97,9 @@ if &term =~ '^xterm'
   " 6 -> solid vertical bar
 endif
 
+" Terminal Buffer
 hi ActiveTerminal ctermfg=NONE ctermbg=16 guibg=#000000 guifg=NONE
 
-" Terminal Buffer
 function! TerminalSettings()
   setlocal nonumber
   setlocal winhighlight=Normal:ActiveTerminal
@@ -113,8 +113,11 @@ augroup terminal
     autocmd TermOpen * call TerminalSettings()
 augroup END
 
+let g:c_syntax_for_h = 1
+
 lua << EOF
 local lspconfig = require('lspconfig')
+
 
 vim.diagnostic.config({
   signs = {
@@ -127,7 +130,11 @@ vim.diagnostic.config({
   },
 })
 
+lspconfig.bashls.setup{}
 lspconfig.clangd.setup{}
+lspconfig.cmake.setup{}
 lspconfig.gopls.setup{}
+lspconfig.hls.setup{}
 lspconfig.rust_analyzer.setup{}
+lspconfig.idris2_lsp.setup{}
 EOF
