@@ -78,7 +78,7 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     bindsym $mod+Ctrl+l exec swaylock -f -c 000000
 
     # Hibernate
-    bindsym $mod+Ctrl+h exec swaylock -f -c 000000 & systemctl hibernate
+    bindsym $mod+Ctrl+h exec swaylock -f -c 000000 & loginctl hibernate
 
 #
 # Moving around:
@@ -100,10 +100,10 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     bindsym $mod+Shift+$up move up
     bindsym $mod+Shift+$right move right
     # Ditto, with arrow keys
-    bindsym $mod+Shift+Left move left
-    bindsym $mod+Shift+Down move down
-    bindsym $mod+Shift+Up move up
-    bindsym $mod+Shift+Right move right
+    bindsym $mod+Shift+Left move workspace to output left
+    bindsym $mod+Shift+Down move workspace to output down
+    bindsym $mod+Shift+Up move workspace to output up
+    bindsym $mod+Shift+Right move workspace to output right
 #
 # Workspaces:
 #
@@ -253,4 +253,5 @@ include /etc/sway/config.d/*
 # Managed by systemd: swayidle.service
 # Use 'systemctl --user stop swayidle.service' to disable
 # Use 'systemctl --user start swayidle.service' to re-enable
-exec_always "systemctl --user start sway-session.target"
+# exec_always "systemctl --user start sway-session.target"
+exec dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus

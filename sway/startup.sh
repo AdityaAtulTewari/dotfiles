@@ -7,14 +7,15 @@ open_on_workspace() {
   if [ ! -f /tmp/startup/$2 ]; then
     swaymsg "exec $3"
     touch /tmp/startup/$2
-    sleep ${SLEEP}
+    sleep $4
   fi
 }
 
-open_on_workspace 9 firefox firefox
-open_on_workspace 7 signal signal-desktop
-open_on_workspace 6 librewolf librewolf
-open_on_workspace 5 reviewer foot
-open_on_workspace 4 slack slack
-open_on_workspace 2 main foot
-open_on_workspace 1 discord discord
+open_on_workspace 9 firefox firefox 5
+open_on_workspace 6 librewolf librewolf 5
+open_on_workspace 5 reviewer foot 2
+open_on_workspace 2 main foot 2
+open_on_workspace 1 signal signal-desktop 0
+open_on_workspace 1 slack slack 0
+open_on_workspace 1 discord discord 0
+swaymsg layout tabbed
