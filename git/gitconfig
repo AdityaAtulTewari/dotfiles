@@ -4,7 +4,7 @@
 [core]
   editor = nvim
   preloadindex = true
-  excludesfile = /home/adityat/.gitignore_global
+	excludesfile = /home/tewaro/.gitignore_global
 [color]
   ui = auto
   interactive = auto

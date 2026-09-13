@@ -58,3 +58,8 @@ if ! infocmp -x xterm-ghostty > /dev/null; then
 	
 	rm -r $workdir
 fi
+
+# Install jj
+if ! command -v jj; then
+	cargo install --locked --bin jj jj-cli
+fi
